@@ -56,4 +56,64 @@
         }
     }
 
+    function vowelsCountLoop(txt) {
+        var count = 0;
+        txt.split('').forEach(function (s) {
+            if ((/^[aeiou]$/i).test(s)) {
+                count++;
+            }
+        });
+        return count;
+    }
+
+    function vowelsCount(txt) {
+        var vowels = txt.match(/[aeiou]/gi);
+        return vowels ? vowels.length : 0;
+    }
+
+    function vowelsCountRecursive(txt) {
+        if(txt.length < 1){
+            return (/^[aeiou]$/i).test(txt) ? 1 : 0;
+        } else {
+            var n = (/^[aeiou]$/i).test(txt.slice(-1)) ? 1 : 0;
+            return n + vowelsCountRecursive(txt.slice(0,-1));
+        }
+    }
+
+    function txtKindLoop(txt) {
+        var lower = 0;
+        var upper = 0;
+        txt.split('').forEach(function (s) {
+            var code = s.charCodeAt();
+            if(code >= 97 && code <= 122) {
+                lower++;
+            }
+            if(code >= 65 && code <= 90) {
+                upper++;
+            }
+        });
+        if(lower === 0 && upper > 0) {
+            console.log('Text is all in UpperCase');
+        }
+        else if(lower > 0 && upper === 0) {
+            console.log('Text is all in LowerCase');
+        } else {
+            console.log('Text is Mixed');
+        }
+    }
+
+    function txtKind(txt) {
+        var lowers = txt.match(/[a-z]/g) || [];
+        var uppers = txt.match(/[A-Z]/g) || [];
+
+        if(lowers.length === 0 && uppers.length > 0) {
+            console.log('Text is all in UpperCase');
+        }
+        else if(lowers.length > 0 && uppers.length === 0) {
+            console.log('Text is all in LowerCase');
+        } else {
+            console.log('Text is Mixed');
+        }
+    }
+
 })();
