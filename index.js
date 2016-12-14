@@ -116,4 +116,18 @@
         }
     }
 
+    //Pangram: it contains every letter in the English alphabet
+    function listMissingLetters(txt) {
+        var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','z','y','z'];
+        var result = '';
+        alphabet.forEach(function(c) {
+            var index = txt.toLowerCase().split('').indexOf(c);
+            if(index === -1){
+                result += c;
+            }
+        });
+        return result;
+
+    }
+
 })();
